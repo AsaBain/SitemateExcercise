@@ -2,7 +2,7 @@ function showModal({ message, callback }) {
   const currModal = createModal();
 
   const currModalBackdrop = createModalBackdrop();
-  const content = CurrModalContent(currModal, { message, callback });
+  const content = createModalContent(currModal, { message, callback });
 
   currModal.appendChild(currModalBackdrop);
   currModal.appendChild(content);
