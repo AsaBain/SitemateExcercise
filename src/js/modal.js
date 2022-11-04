@@ -2,7 +2,7 @@ function showModal({ message, callback }) {
   const currModal = createModal();
 
   const currModalBackdrop = createModalBackdrop();
-  const content = createModalContent(currModal, { message, callback });
+  const content = createModalContent(currModal.id, { message, callback });
 
   currModal.appendChild(currModalBackdrop);
   currModal.appendChild(content);
@@ -24,7 +24,7 @@ function createModalBackdrop() {
   return element;
 }
 
-function createModalContent(parent, { message, callback }) {
+function createModalContent(parentId, { message, callback }) {
   // content container
   const content = document.createElement("div");
   content.classList.add("modal__content");
@@ -36,24 +36,24 @@ function createModalContent(parent, { message, callback }) {
 
   // button container
   const buttonContainer = document.createElement("div");
-  contentMessage.classList.add("modal__button-container");
+  buttonContainer.classList.add("modal__button-container");
 
   //yes button
   const yesBtn = document.createElement("button");
-  yesBtn.classList.add("button");
+  yesBtn.classList.add("c-button");
   yesBtn.textContent = "Yes";
   yesBtn.addEventListener("click", () => {
     callback(true);
-    closeModal();
+    closeModal(parentId);
   });
 
   //cancel button
   const cancelBtn = document.createElement("button");
-  cancelBtn.classList.add("button");
+  cancelBtn.classList.add("c-button");
   cancelBtn.textContent = "Cancel";
   cancelBtn.addEventListener("click", () => {
     callback(false);
-    closeModal();
+    closeModal(parentId);
   });
 
   buttonContainer.append(yesBtn, cancelBtn);

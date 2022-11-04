@@ -1,4 +1,5 @@
-import { showModal } from "./module/modal";
+import {showModal} from "./js/modal.js";
+
 const myBtn = document.getElementById("myBtn");
 const messageParagraph = document.getElementById("messageParagraph");
 
